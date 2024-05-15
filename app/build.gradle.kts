@@ -115,3 +115,8 @@ dependencies {
     implementation(libs.lottie.compose)
 
 }
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
+}
