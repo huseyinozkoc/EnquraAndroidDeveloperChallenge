@@ -10,21 +10,30 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.enquraandroiddeveloperchallenge.data.model.BankData
-import com.example.enquraandroiddeveloperchallenge.presentation.HomePage.HomePageViewModel
 import com.google.gson.Gson
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
+
+import androidx.compose.material.icons.Icons
+import androidx.compose.ui.platform.LocalContext
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 
 
 @Composable
 fun DetailPage(bankDataJson: String, navController: NavController) {
     val viewModel: DetailPageViewModel = hiltViewModel()
+    val context = LocalContext.current
 
     //----------------------------------------------------------------------------
     // Took Data from HomePage
@@ -38,9 +47,33 @@ fun DetailPage(bankDataJson: String, navController: NavController) {
     viewModel.logUserEnteredDetailPageEvent(bankData.city)
     //----------------------------------------------------------------------------
 
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        BankDetailCard(bankData = bankData)
+
+    Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(onClick = {
+                //https://developers.google.com/maps/documentation/urls/android-intents#kotlin_2
+                val gmmIntentUri = Uri.parse("geo:0,0?q=${bankData.address}")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                if (mapIntent.resolveActivity(context.packageManager) != null) {
+                    context.startActivity(mapIntent)
+                }
+            }) {
+                Icon(Icons.Filled.LocationOn, contentDescription = "Navigate to address")
+            }
+        }
+    ) { paddingValues ->
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues),
+            contentAlignment = Alignment.Center
+        ) {
+            BankDetailCard(bankData = bankData)
+        }
     }
+
+
 }
 
 
