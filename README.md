@@ -5,10 +5,6 @@
 -  [🧩 Modules](#-modules)
 - [⚙️ Gradle Dependencies](#-features)
 - [📂 Project Structure](#project-structure)
-- [🗺 Firebase Console ](#-getting-started)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
-- [👏 Acknowledgments](#-acknowledgments)
 
 ---
 
