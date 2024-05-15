@@ -1,4 +1,4 @@
-package com.example.enquraandroiddeveloperchallenge.presentation
+package com.example.enquraandroiddeveloperchallenge.presentation.SplashPage
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -19,6 +19,7 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.enquraandroiddeveloperchallenge.R
+import com.example.enquraandroiddeveloperchallenge.presentation.Screen
 import kotlinx.coroutines.delay
 
 @Composable

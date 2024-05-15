@@ -14,6 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.enquraandroiddeveloperchallenge.presentation.DetailPage.DetailPage
+import com.example.enquraandroiddeveloperchallenge.presentation.HomePage.HomePage
+import com.example.enquraandroiddeveloperchallenge.presentation.SplashPage.SplashPage
 import com.example.enquraandroiddeveloperchallenge.ui.theme.EnquraAndroidDeveloperChallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
