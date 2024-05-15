@@ -3,7 +3,6 @@ package com.example.enquraandroiddeveloperchallenge.presentation.HomePage
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,12 +15,17 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.enquraandroiddeveloperchallenge.data.model.BankData
+import com.example.enquraandroiddeveloperchallenge.presentation.Screen
+import com.google.gson.Gson
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
 fun HomePage(navController: NavController) {
 
     val viewModel: HomePageViewModel = hiltViewModel()
     val state = viewModel.homePageState.value
+    val gson = Gson()
 
     LazyColumn {
         if (state.isLoading) {
@@ -38,7 +42,11 @@ fun HomePage(navController: NavController) {
             }
         } else {
             items(state.bankDataList) { bankData ->
-                BankDataCard(bankData = bankData)
+                BankDataCard(bankData = bankData) {
+                    val bankDataJson = gson.toJson(bankData)
+                    val encodedBankDataJson = URLEncoder.encode(bankDataJson, StandardCharsets.UTF_8.toString())
+                    navController.navigate("${Screen.DetailPage.route}/$encodedBankDataJson")
+                }
             }
         }
     }
@@ -46,8 +54,8 @@ fun HomePage(navController: NavController) {
 
 
 @Composable
-fun BankDataCard(bankData: BankData) {
-    Card(modifier = Modifier.padding(32.dp)) {
+fun BankDataCard(bankData: BankData,onClickToCard: () -> Unit) {
+    Card(modifier = Modifier.padding(32.dp).clickable(onClick = onClickToCard)) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = "ID: ${bankData.id}")
             Text(text = "City: ${bankData.city}")

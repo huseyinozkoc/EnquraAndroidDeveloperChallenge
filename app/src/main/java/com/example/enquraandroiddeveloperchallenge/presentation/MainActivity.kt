@@ -11,9 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.enquraandroiddeveloperchallenge.presentation.DetailPage.DetailPage
 import com.example.enquraandroiddeveloperchallenge.presentation.HomePage.HomePage
 import com.example.enquraandroiddeveloperchallenge.presentation.SplashPage.SplashPage
@@ -43,8 +45,16 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screen.HomePage.route) {
                             HomePage(navController = navController)
                         }
-                        composable(route = Screen.DetailPage.route) {
-                            DetailPage(navController = navController)
+                        composable(
+                            "${Screen.DetailPage.route}/{bankDataJson}",
+                            arguments = listOf(navArgument("bankDataJson") {
+                                type = NavType.StringType
+                            })
+                        ) { backStackEntry ->
+                            val bankDataJson = backStackEntry.arguments?.getString("bankDataJson")
+                            if (bankDataJson != null) {
+                                DetailPage(bankDataJson, navController)
+                            }
                         }
                     }
                 }
