@@ -46,7 +46,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import com.example.enquraandroiddeveloperchallenge.designsystem.EnquraErrorImage
 import com.example.enquraandroiddeveloperchallenge.designsystem.EnquraLoadingAnimation
+import com.example.enquraandroiddeveloperchallenge.designsystem.EnquraNoDataImage
 import java.util.Locale
 
 @Composable
@@ -125,6 +127,15 @@ fun HomePage(navController: NavController) {
                 ) {
                     EnquraLoadingAnimation()
                 }
+            } else {
+                if (state.error.toString() == "BankListError") {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        EnquraErrorImage()
+                    }
+                }
             }
 
             LazyColumn(
@@ -132,19 +143,7 @@ fun HomePage(navController: NavController) {
                     .fillMaxSize()
                     .padding(paddingValue)
             ) {
-                if (state.isLoading) {
-                    item {
-                        Box(contentAlignment = Alignment.Center) {
-                            Text(text = "Loading...")
-                        }
-                    }
-                } else if (state.error.isNotEmpty()) {
-                    item {
-                        Box(contentAlignment = Alignment.Center) {
-                            Text(text = "Error: ${state.error}")
-                        }
-                    }
-                } else if (filteredBankDataList.isEmpty()) {
+                if (filteredBankDataList.isEmpty()) {
                     item {
                         Box(
                             modifier = Modifier.fillMaxSize(),
@@ -155,7 +154,10 @@ fun HomePage(navController: NavController) {
                                 verticalArrangement = Arrangement.Center,
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-                                Text(text = stringResource(R.string.no_search_data_found))
+                                //Text(text = stringResource(R.string.no_search_data_found))
+                                if(!state.isLoading) {
+                                    EnquraNoDataImage()
+                                }
                             }
                         }
                     }
