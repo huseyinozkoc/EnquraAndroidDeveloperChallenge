@@ -26,7 +26,7 @@ Welcome to the Bank Branch Locator app! Easily find and filter bank branches, vi
 
 | Splash Screen           |  Home Screen | Home Loading |  Home Search  |
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
- ![splash](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/98c0ee45-06f3-4b41-ad36-f4fc382f1829) |                                      ![home](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/ffda1951-f8c0-4219-a9ac-0b6d40bcda73) | [homeloading](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/565fbe49-54f1-4647-a1df-85dc4dc76b01) |                                                                          ![homesearch](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/4de09dbc-3aab-4dc3-ab45-35c5c9dfe83c) |
+ ![splash](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/98c0ee45-06f3-4b41-ad36-f4fc382f1829) |                                      ![home](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/ffda1951-f8c0-4219-a9ac-0b6d40bcda73) | ![homeloading](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/565fbe49-54f1-4647-a1df-85dc4dc76b01) |                                                                          ![homesearch](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/4de09dbc-3aab-4dc3-ab45-35c5c9dfe83c) |
 
  | Detail Screen          |  Detail navigation | Home English | Home Turkish |
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
