@@ -15,6 +15,11 @@ Welcome to the Bank Branch Locator app! Easily find and filter bank branches, vi
 
 ## 🚀Screenshots
 
+1-API Request- Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+2-API Request loading process- Done!
+3-List Result and show if there is no data- Done!
+4-Search according to city- Done!
+
 
 
 
