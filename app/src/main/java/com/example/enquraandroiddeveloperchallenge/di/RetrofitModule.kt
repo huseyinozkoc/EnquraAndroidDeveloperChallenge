@@ -1,7 +1,7 @@
 package com.example.enquraandroiddeveloperchallenge.di
 
 import com.example.enquraandroiddeveloperchallenge.common.Constants.BASE_URL
-import com.example.enquraandroiddeveloperchallenge.data.BankService
+import com.example.enquraandroiddeveloperchallenge.data.source.BankService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
