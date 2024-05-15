@@ -16,9 +16,22 @@ Welcome to the Bank Branch Locator app! Easily find and filter bank branches, vi
 ## 🚀Screenshots
 
 1-API Request- Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
-2-API Request loading process- Done!
-3-List Result and show if there is no data- Done!
-4-Search according to city- Done!
+2-API Request loading process- Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+3-List Result and show if there is no data- Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+4-Search according to city- Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+5-Update list according to search - Done ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+6-Wifi check and warn to user- Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+7-Detail Page- Done ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+8- Use firebase analytics for log detail page - Done ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+9-Users should navigate according to address, and navigate to maps.- Done ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+10- Moduler UI design with Design System Components- Done ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+11-Clean Artc. with MVVM- Done ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+12-Custom Animation library with Lottie Animatios! - Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+13-Animations between screen navigations! - Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+14-Create Localization for English and Turkish! - Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+15-Write all project with Compose! - Done! ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+16-Use GitHub! -Done ![done](https://img.icons8.com/emoji/48/000000/check-mark-emoji.png) 
+
 
 
 
