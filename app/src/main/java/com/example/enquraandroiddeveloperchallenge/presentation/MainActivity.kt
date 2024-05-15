@@ -4,6 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -50,14 +54,67 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = Screen.SplashPage.route
                     ) {
-                        composable(route = Screen.SplashPage.route) {
+                        composable(route = Screen.SplashPage.route,
+                            enterTransition = {
+                                slideInHorizontally(
+                                    initialOffsetX = { 1000 },
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                )
+                            },
+                            exitTransition = {
+                                slideOutHorizontally(
+                                    targetOffsetX = { -1000 },
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                )
+                            },
+                            popEnterTransition = {
+                                slideInHorizontally(
+                                    initialOffsetX = { -1000 },
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                )
+                            }
+                        ) {
                             SplashPage(navController = navController)
                         }
-                        composable(route = Screen.HomePage.route) {
+                        composable(route = Screen.HomePage.route, enterTransition = {
+                            slideInHorizontally(
+                                initialOffsetX = { 1000 },
+                                animationSpec = tween(500, easing = FastOutSlowInEasing)
+                            )
+                        },
+                            exitTransition = {
+                                slideOutHorizontally(
+                                    targetOffsetX = { -1000 },
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                )
+                            },
+                            popEnterTransition = {
+                                slideInHorizontally(
+                                    initialOffsetX = { -1000 },
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                )
+                            }) {
                             HomePage(navController = navController)
                         }
                         composable(
-                            "${Screen.DetailPage.route}/{bankDataJson}",
+                            "${Screen.DetailPage.route}/{bankDataJson}", enterTransition = {
+                                slideInHorizontally(
+                                    initialOffsetX = { 1000 },
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                )
+                            },
+                            exitTransition = {
+                                slideOutHorizontally(
+                                    targetOffsetX = { -1000 },
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                )
+                            },
+                            popEnterTransition = {
+                                slideInHorizontally(
+                                    initialOffsetX = { -1000 },
+                                    animationSpec = tween(500, easing = FastOutSlowInEasing)
+                                )
+                            },
                             arguments = listOf(navArgument("bankDataJson") {
                                 type = NavType.StringType
                             })
