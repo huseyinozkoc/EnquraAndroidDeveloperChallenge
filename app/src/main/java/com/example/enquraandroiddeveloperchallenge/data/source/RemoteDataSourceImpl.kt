@@ -1,7 +1,6 @@
 package com.example.enquraandroiddeveloperchallenge.data.source
 
-import com.example.enquraandroiddeveloperchallenge.data.model.BankData
-import com.example.enquraandroiddeveloperchallenge.domain.RemoteDataSource
+import com.example.enquraandroiddeveloperchallenge.domain.source.RemoteDataSource
 import javax.inject.Inject
 
 class RemoteDataSourceImpl @Inject constructor(

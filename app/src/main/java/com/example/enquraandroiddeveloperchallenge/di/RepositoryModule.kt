@@ -1,7 +1,7 @@
 package com.example.enquraandroiddeveloperchallenge.di
 
-import com.example.enquraandroiddeveloperchallenge.data.source.BankService
-import com.example.enquraandroiddeveloperchallenge.data.source.RemoteDataSourceImpl
+import com.example.enquraandroiddeveloperchallenge.data.repository.BankRepositoryImpl
+import com.example.enquraandroiddeveloperchallenge.domain.repository.BankRepository
 import com.example.enquraandroiddeveloperchallenge.domain.source.RemoteDataSource
 import dagger.Module
 import dagger.Provides
@@ -11,10 +11,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataSourceModule {
+object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideRemoteDataSource(bankService: BankService): RemoteDataSource =
-        RemoteDataSourceImpl(bankService = bankService)
+    fun provideBankRepository(
+        remoteDataSource: RemoteDataSource,
+    ): BankRepository =
+        BankRepositoryImpl(remoteDataSource)
+
 }

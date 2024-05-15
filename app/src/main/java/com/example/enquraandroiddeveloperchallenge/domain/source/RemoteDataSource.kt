@@ -1,4 +1,4 @@
-package com.example.enquraandroiddeveloperchallenge.domain
+package com.example.enquraandroiddeveloperchallenge.domain.source
 
 import com.example.enquraandroiddeveloperchallenge.data.model.BankData
 

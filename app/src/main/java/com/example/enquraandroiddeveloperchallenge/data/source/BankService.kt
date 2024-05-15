@@ -4,6 +4,6 @@ import com.example.enquraandroiddeveloperchallenge.data.model.BankData
 import retrofit2.http.GET
 
 interface BankService {
-    @GET(".")
+    @GET("bankdata")
     suspend fun getBankDataList(): List<BankData>
 }
