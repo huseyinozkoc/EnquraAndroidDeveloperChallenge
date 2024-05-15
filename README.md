@@ -78,3 +78,39 @@ Welcome to the Bank Branch Locator app! Easily find and filter bank branches, vi
 
 
 ---
+
+## ⚙️ Gradle Dependencies
+![gradle](https://github.com/huseyinozkoc/BitcoinTicker/assets/48124105/dbf4a339-1c0c-43ff-b1bd-bf05cd60ba8c)
+
+- MVVM with Clean Architecture
+ - Coroutines & Flow
+ - Compose Navigation
+ - Hilt for Dependency Injection
+ - Retrofit
+ - Coil
+
+
+| Versions          |  Libraries | Plugins |  Home Screen  |
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+  
+![lib1](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/9dd87c50-92d3-4b15-a2bd-f9ff6816f4d5) | ![lib2](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/d0bd8d91-634b-43cc-94b9-40600e83b279)
+   | ![lib3](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/d3ae3660-d2d0-45a9-8967-aafd8ea378b9) | 
+
+
+
+**All Gradle Of The Bank Application**
+
+---
+
+ 
+---
+
+
+
+---
+## 📂 Project Structure
+
+![project structure](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/ec872abb-36e5-4c60-93b0-7b5728b18372)
+
+---
+
