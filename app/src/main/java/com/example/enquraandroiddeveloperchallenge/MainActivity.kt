@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screen.HomePage.route) {
                             HomePage(navController = navController)
                         }
-                        composable(route = Screen.HomePage.route) {
+                        composable(route = Screen.DetailPage.route) {
                             DetailPage(navController = navController)
                         }
                     }
