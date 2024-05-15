@@ -16,7 +16,7 @@ object NetworkStatusChecker {
                 this.trySend(isConnected).isSuccess
             }
         } catch (e: Exception) {
-            // Handle any exception that occurred in the flow
+
         }
         awaitClose { }
     }.flowOn(Dispatchers.IO)

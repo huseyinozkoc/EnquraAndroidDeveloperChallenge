@@ -14,7 +14,9 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.enquraandroiddeveloperchallenge.data.model.BankData
+import com.example.enquraandroiddeveloperchallenge.presentation.HomePage.HomePageViewModel
 import com.google.gson.Gson
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
@@ -22,10 +24,19 @@ import java.nio.charset.StandardCharsets
 
 @Composable
 fun DetailPage(bankDataJson: String, navController: NavController) {
+    val viewModel: DetailPageViewModel = hiltViewModel()
+
+    //----------------------------------------------------------------------------
+    // Took Data from HomePage
     val gson = Gson()
     val bankDataJson = URLDecoder.decode(bankDataJson, StandardCharsets.UTF_8.toString())
     val bankData = gson.fromJson(bankDataJson, BankData::class.java)
+    //----------------------------------------------------------------------------
 
+    //----------------------------------------------------------------------------
+    // Log Event with city
+    viewModel.logUserEnteredDetailPageEvent(bankData.city)
+    //----------------------------------------------------------------------------
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         BankDetailCard(bankData = bankData)

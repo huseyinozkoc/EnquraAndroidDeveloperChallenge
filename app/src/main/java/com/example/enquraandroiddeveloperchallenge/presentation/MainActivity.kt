@@ -32,11 +32,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
+            //Internet connection check
+            // -----------------------------------------------------------------------------------------------------------
             val context = LocalContext.current
             val internetConnectionFlow = NetworkStatusChecker.internetConnectionFlow(context)
             EnquraNoInternetDialog(internetConnectionFlow = internetConnectionFlow)
-
+            //------------------------------------------------------------------------------------------------------------
 
             EnquraAndroidDeveloperChallengeTheme {
                 // A surface container using the 'background' color from the theme
