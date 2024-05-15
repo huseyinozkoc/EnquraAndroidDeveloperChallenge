@@ -46,6 +46,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import com.example.enquraandroiddeveloperchallenge.designsystem.EnquraLoadingAnimation
 import java.util.Locale
 
 @Composable
@@ -116,6 +117,16 @@ fun HomePage(navController: NavController) {
             }
         },
         content = { paddingValue ->
+
+            if (state.isLoading) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    EnquraLoadingAnimation()
+                }
+            }
+
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
@@ -163,8 +174,6 @@ fun HomePage(navController: NavController) {
     )
 
 }
-
-
 
 
 @Composable
