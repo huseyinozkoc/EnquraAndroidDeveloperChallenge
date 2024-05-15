@@ -10,12 +10,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.enquraandroiddeveloperchallenge.designsystem.EnquraNoInternetDialog
 import com.example.enquraandroiddeveloperchallenge.presentation.DetailPage.DetailPage
 import com.example.enquraandroiddeveloperchallenge.presentation.HomePage.HomePage
 import com.example.enquraandroiddeveloperchallenge.presentation.SplashPage.SplashPage
@@ -24,10 +26,18 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+
+            val context = LocalContext.current
+            val internetConnectionFlow = NetworkStatusChecker.internetConnectionFlow(context)
+            EnquraNoInternetDialog(internetConnectionFlow = internetConnectionFlow)
+
+
             EnquraAndroidDeveloperChallengeTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(

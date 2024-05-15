@@ -76,8 +76,8 @@ fun HomePage(navController: NavController) {
                         ) {
                             Column(
                                 modifier = Modifier.fillMaxSize(),
-                                verticalArrangement = Arrangement.Center, // This centers the content vertically
-                                horizontalAlignment = Alignment.CenterHorizontally // This centers the content horizontally
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(text = "No search data found.")
                             }
