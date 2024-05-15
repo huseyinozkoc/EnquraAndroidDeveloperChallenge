@@ -1,4 +1,4 @@
-package com.example.enquraandroiddeveloperchallenge
+package com.example.enquraandroiddeveloperchallenge.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

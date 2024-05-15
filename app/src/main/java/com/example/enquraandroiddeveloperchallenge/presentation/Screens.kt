@@ -1,4 +1,4 @@
-package com.example.enquraandroiddeveloperchallenge
+package com.example.enquraandroiddeveloperchallenge.presentation
 
 sealed class Screen(val route: String) {
     object SplashPage : Screen("splash_page")
