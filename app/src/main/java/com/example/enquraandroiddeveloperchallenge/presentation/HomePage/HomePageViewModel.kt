@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.enquraandroiddeveloperchallenge.common.Resource
+import com.example.enquraandroiddeveloperchallenge.data.model.BankData
 import com.example.enquraandroiddeveloperchallenge.domain.usecase.GetBankDataListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,6 +18,10 @@ class HomePageViewModel @Inject constructor(
 
     private val _homePageState = mutableStateOf<HomePageState>(HomePageState())
     val homePageState: State<HomePageState> = _homePageState
+
+    private val _filteredBankDataList = mutableStateOf<List<BankData>>(emptyList())
+    val filteredBankDataList: State<List<BankData>> = _filteredBankDataList
+
     init {
         getBankList()
     }
@@ -33,9 +38,14 @@ class HomePageViewModel @Inject constructor(
                 is Resource.Success -> {
                     _homePageState.value = HomePageState(isLoading = false)
                     _homePageState.value = HomePageState(bankDataList = it.data ?: emptyList())
+                    _filteredBankDataList.value = it.data ?: emptyList()
                 }
             }
         }
+    }
+
+    fun filterBankDataList(query: String) {
+        _filteredBankDataList.value = _homePageState.value.bankDataList.filter { it.city.contains(query, ignoreCase = true) }
     }
 
 

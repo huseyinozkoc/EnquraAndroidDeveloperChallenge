@@ -1,14 +1,21 @@
 package com.example.enquraandroiddeveloperchallenge.presentation.HomePage
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -25,37 +32,80 @@ fun HomePage(navController: NavController) {
 
     val viewModel: HomePageViewModel = hiltViewModel()
     val state = viewModel.homePageState.value
+    val filteredBankDataList = viewModel.filteredBankDataList.value
+    val searchQuery = remember { mutableStateOf("") }
     val gson = Gson()
 
-    LazyColumn {
-        if (state.isLoading) {
-            item {
-                Box(contentAlignment = Alignment.Center) {
-                    Text(text = "Loading...")
-                }
-            }
-        } else if (state.error.isNotEmpty()) {
-            item {
-                Box(contentAlignment = Alignment.Center) {
-                    Text(text = "Error: ${state.error}")
-                }
-            }
-        } else {
-            items(state.bankDataList) { bankData ->
-                BankDataCard(bankData = bankData) {
-                    val bankDataJson = gson.toJson(bankData)
-                    val encodedBankDataJson = URLEncoder.encode(bankDataJson, StandardCharsets.UTF_8.toString())
-                    navController.navigate("${Screen.DetailPage.route}/$encodedBankDataJson")
+    Scaffold(
+        topBar = {
+            TextField(
+                value = searchQuery.value,
+                onValueChange = { newValue ->
+                    searchQuery.value = newValue
+                    viewModel.filterBankDataList(newValue)
+                },
+                label = { Text("Search by city") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 32.dp, start = 8.dp, end = 8.dp)
+            )
+        },
+        content = { paddingValue ->
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValue)
+            ) {
+                if (state.isLoading) {
+                    item {
+                        Box(contentAlignment = Alignment.Center) {
+                            Text(text = "Loading...")
+                        }
+                    }
+                } else if (state.error.isNotEmpty()) {
+                    item {
+                        Box(contentAlignment = Alignment.Center) {
+                            Text(text = "Error: ${state.error}")
+                        }
+                    }
+                } else if (filteredBankDataList.isEmpty()) {
+                    item {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Column(
+                                modifier = Modifier.fillMaxSize(),
+                                verticalArrangement = Arrangement.Center, // This centers the content vertically
+                                horizontalAlignment = Alignment.CenterHorizontally // This centers the content horizontally
+                            ) {
+                                Text(text = "No search data found.")
+                            }
+                        }
+                    }
+                } else {
+                    items(filteredBankDataList) { bankData ->
+                        BankDataCard(bankData = bankData) {
+                            val bankDataJson = gson.toJson(bankData)
+                            val encodedBankDataJson =
+                                URLEncoder.encode(bankDataJson, StandardCharsets.UTF_8.toString())
+                            navController.navigate("${Screen.DetailPage.route}/$encodedBankDataJson")
+                        }
+                    }
                 }
             }
         }
-    }
+    )
 }
 
 
 @Composable
-fun BankDataCard(bankData: BankData,onClickToCard: () -> Unit) {
-    Card(modifier = Modifier.padding(32.dp).clickable(onClick = onClickToCard)) {
+fun BankDataCard(bankData: BankData, onClickToCard: () -> Unit) {
+    Card(
+        modifier = Modifier
+            .padding(32.dp)
+            .clickable(onClick = onClickToCard)
+    ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = "ID: ${bankData.id}")
             Text(text = "City: ${bankData.city}")
