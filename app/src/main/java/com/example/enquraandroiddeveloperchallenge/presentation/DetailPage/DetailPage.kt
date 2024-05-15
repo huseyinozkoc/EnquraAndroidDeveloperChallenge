@@ -28,6 +28,8 @@ import android.net.Uri
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.ui.res.stringResource
+import com.example.enquraandroiddeveloperchallenge.R
 
 
 @Composable
@@ -90,19 +92,18 @@ fun BankDetailCard(bankData: BankData) {
                 .padding(16.dp)
                 .fillMaxWidth()
         ) {
-            Text(text = "ID: ${bankData.id}")
-            Text(text = "City: ${bankData.city}")
-            Text(text = "District: ${bankData.district}")
-            Text(text = "Bank Branch: ${bankData.bankBranch}")
-            Text(text = "Bank Type: ${bankData.bankType}")
-            Text(text = "Bank Code: ${bankData.bankCode}")
-            Text(text = "Address Name: ${bankData.addressName}")
-            Text(text = "Address: ${bankData.address}")
-            Text(text = "Postal Code: ${bankData.postalCode}")
-            Text(text = "On/Off Line: ${bankData.onOffLine}")
-            Text(text = "On/Off Site: ${bankData.onOffSite}")
-            Text(text = "Region Coordinator: ${bankData.regionCoordinator}")
-            Text(text = "Nearest ATM: ${bankData.nearestAtm}")
+            Text(text = stringResource(R.string.city) + " ${bankData.city}")
+            Text(text = stringResource(R.string.district) + " ${bankData.district}")
+            Text(text = stringResource(R.string.bank_branch) + " ${bankData.bankBranch}")
+            Text(text = stringResource(R.string.bank_type) + " ${bankData.bankType}")
+            Text(text = stringResource(R.string.bank_code) + " ${bankData.bankCode}")
+            Text(text = stringResource(R.string.address_name) + " ${bankData.addressName}")
+            Text(text = stringResource(R.string.address) + " ${bankData.address}")
+            Text(text = stringResource(R.string.postal_code) + " ${bankData.postalCode}")
+            Text(text = stringResource(R.string.on_off_line) + " ${bankData.onOffLine}")
+            Text(text = stringResource(R.string.on_off_site) + " ${bankData.onOffSite}")
+            Text(text = stringResource(R.string.region_coordinator) + " ${bankData.regionCoordinator}")
+            Text(text = stringResource(R.string.nearest_atm) + " ${bankData.nearestAtm}")
         }
     }
 }

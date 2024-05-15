@@ -18,37 +18,102 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.enquraandroiddeveloperchallenge.R
 import com.example.enquraandroiddeveloperchallenge.data.model.BankData
 import com.example.enquraandroiddeveloperchallenge.presentation.Screen
 import com.google.gson.Gson
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
+import android.content.res.Configuration
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
+import java.util.Locale
+
 @Composable
 fun HomePage(navController: NavController) {
 
     val viewModel: HomePageViewModel = hiltViewModel()
+    val context = LocalContext.current
+
+
     val state = viewModel.homePageState.value
     val filteredBankDataList = viewModel.filteredBankDataList.value
     val searchQuery = remember { mutableStateOf("") }
     val gson = Gson()
+    val currentNavController = rememberUpdatedState(navController)
+
+    val flagPainter: Painter = painterResource(id = R.drawable.flag)
+    val flagEngPainter: Painter = painterResource(id = R.drawable.flageng)
+
+    fun changeLanguage(language: String) {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        context.resources.updateConfiguration(config, context.resources.displayMetrics)
+
+        // Force UI recreation
+        val currentDestination = currentNavController.value.currentDestination?.id
+        currentNavController.value.popBackStack()
+        currentDestination?.let { currentNavController.value.navigate(it) }
+    }
 
     Scaffold(
         topBar = {
-            TextField(
-                value = searchQuery.value,
-                onValueChange = { newValue ->
-                    searchQuery.value = newValue
-                    viewModel.filterBankDataList(newValue)
-                },
-                label = { Text("Search by city") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 32.dp, start = 8.dp, end = 8.dp)
-            )
+            Column {
+                TextField(
+                    value = searchQuery.value,
+                    onValueChange = { newValue ->
+                        searchQuery.value = newValue
+                        viewModel.filterBankDataList(newValue)
+                    },
+                    label = { Text(stringResource(R.string.search_by_city)) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 32.dp, start = 8.dp, end = 8.dp)
+                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 16.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Image(
+                        painter = flagEngPainter,
+                        contentDescription = "Change language to English",
+                        modifier = Modifier
+                            .clickable { changeLanguage("en") }
+                            .size(100.dp)
+
+                    )
+                    Image(
+                        painter = flagPainter,
+                        contentDescription = "Change language to Turkish",
+                        modifier = Modifier
+                            .clickable { changeLanguage("tr") }
+                            .size(100.dp)
+                    )
+                }
+            }
         },
         content = { paddingValue ->
             LazyColumn(
@@ -79,7 +144,7 @@ fun HomePage(navController: NavController) {
                                 verticalArrangement = Arrangement.Center,
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-                                Text(text = "No search data found.")
+                                Text(text = stringResource(R.string.no_search_data_found))
                             }
                         }
                     }
@@ -96,7 +161,10 @@ fun HomePage(navController: NavController) {
             }
         }
     )
+
 }
+
+
 
 
 @Composable
@@ -107,19 +175,18 @@ fun BankDataCard(bankData: BankData, onClickToCard: () -> Unit) {
             .clickable(onClick = onClickToCard)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = "ID: ${bankData.id}")
-            Text(text = "City: ${bankData.city}")
-            Text(text = "District: ${bankData.district}")
-            Text(text = "Bank Branch: ${bankData.bankBranch}")
-            Text(text = "Bank Type: ${bankData.bankType}")
-            Text(text = "Bank Code: ${bankData.bankCode}")
-            Text(text = "Address Name: ${bankData.addressName}")
-            Text(text = "Address: ${bankData.address}")
-            Text(text = "Postal Code: ${bankData.postalCode}")
-            Text(text = "On/Off Line: ${bankData.onOffLine}")
-            Text(text = "On/Off Site: ${bankData.onOffSite}")
-            Text(text = "Region Coordinator: ${bankData.regionCoordinator}")
-            Text(text = "Nearest ATM: ${bankData.nearestAtm}")
+            Text(text = stringResource(R.string.city) + " ${bankData.city}")
+            Text(text = stringResource(R.string.district) + " ${bankData.district}")
+            Text(text = stringResource(R.string.bank_branch) + " ${bankData.bankBranch}")
+            Text(text = stringResource(R.string.bank_type) + " ${bankData.bankType}")
+            Text(text = stringResource(R.string.bank_code) + " ${bankData.bankCode}")
+            Text(text = stringResource(R.string.address_name) + " ${bankData.addressName}")
+            Text(text = stringResource(R.string.address) + " ${bankData.address}")
+            Text(text = stringResource(R.string.postal_code) + " ${bankData.postalCode}")
+            Text(text = stringResource(R.string.on_off_line) + " ${bankData.onOffLine}")
+            Text(text = stringResource(R.string.on_off_site) + " ${bankData.onOffSite}")
+            Text(text = stringResource(R.string.region_coordinator) + " ${bankData.regionCoordinator}")
+            Text(text = stringResource(R.string.nearest_atm) + " ${bankData.nearestAtm}")
         }
     }
 }

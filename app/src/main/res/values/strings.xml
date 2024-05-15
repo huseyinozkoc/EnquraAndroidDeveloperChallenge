@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">EnquraAndroidDeveloperChallenge</string>
+    <string name="search_by_city">Search by city</string>
+    <string name="no_search_data_found">No search data found.</string>
+    <string name="city">City: </string>
+    <string name="district">District: %1$s</string>
+    <string name="bank_branch">Bank Branch: %1$s</string>
+    <string name="bank_type">Bank Type: %1$s</string>
+    <string name="bank_code">Bank Code: %1$s</string>
+    <string name="address_name">Address Name: %1$s</string>
+    <string name="address">Address: %1$s</string>
+    <string name="postal_code">Postal Code: %1$s</string>
+    <string name="on_off_line">On/Off Line: %1$s</string>
+    <string name="on_off_site">On/Off Site: %1$s</string>
+    <string name="region_coordinator">Region Coordinator: %1$s</string>
+    <string name="nearest_atm">Nearest ATM: %1$s</string>
 </resources>
