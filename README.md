@@ -32,9 +32,10 @@ Welcome to the Bank Branch Locator app! Easily find and filter bank branches, vi
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 ![detail](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/71771fc2-0cbe-4098-b604-1b697cee1064) |![detailnavigation](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/d1124e9c-1684-49f6-871a-8e3066356fdd) | ![homeeng](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/3d0748f5-1d4f-451e-a6e4-6f42046bccc6) |![hometr](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/1da0cd41-ec4d-4b3a-b194-76e620dda987) |
 
- | Home No Data           | |  |  |
+ | Home No Data           | No Wifi Connection |  |  |
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-![homenodarta](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/2c9e0f18-4a4c-4561-a77b-120cb61f866f) | | | |
+![homenodarta](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/2c9e0f18-4a4c-4561-a77b-120cb61f866f) | ![nowificonnection](https://github.com/huseyinozkoc/EnquraAndroidDeveloperChallenge/assets/48124105/d81b6602-5a37-4f61-851e-f48c410f2458)
+ | | |
 
 **All Screen Of The Bank Application**
 
